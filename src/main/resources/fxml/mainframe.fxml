@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--<?language JavaScript?>-->
+
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.geometry.*?>
@@ -8,7 +10,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -44,7 +46,7 @@
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
           <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+            <MenuItem mnemonicParsing="false" text="About" />
           </items>
         </Menu>
       </menus>
@@ -61,6 +63,16 @@
                 <Color blue="0.624" green="0.624" red="0.624" fx:id="x2" />
               </textFill>
             </Label>
+                  <Button fx:id="openImageButton" layoutX="58.0" layoutY="142.0" mnemonicParsing="false" onAction="#openImage" text="Open" />
+                  <!--<Button fx:id="hey" onAction="openFuck()" layoutX="54.0" layoutY="216.0" mnemonicParsing="false" text="Button" />-->
+                  <!--<fx:script>-->
+                    <!--var x = 0;-->
+                    <!--function openFuck()-->
+                    <!--{-->
+                      <!--x++;-->
+                      <!--hey.setText(x)-->
+                    <!--}-->
+                  <!--</fx:script>-->
           </children>
         </AnchorPane>
         <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
