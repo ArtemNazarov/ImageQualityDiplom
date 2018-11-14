@@ -2,7 +2,6 @@
 <head>
     <!-- Visibility toggle script -->
     <script type="text/javascript">
-            <!--
             function toggle_visibility(id) {
                 var e = document.getElementById(id);
                 if (e.style.display == 'block')
@@ -10,8 +9,10 @@
                 else
                     e.style.display = 'block';
             }
-//-->
         </script>
+    <script src="https://cdn.anychart.com/releases/8.4.1/js/graphics.min.js"></script>
+    <script src="../js/main.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <h1>Online Help</h1>
@@ -27,5 +28,7 @@
     <li>Partners - Oracle partner solutions and programs. Popular resources and
         membership opportunities.</li>
 </ul>
+
+<div id="container"></div>
 </body>
 </html>
