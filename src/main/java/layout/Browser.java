@@ -15,7 +15,7 @@ public class Browser extends Region {
 
     public Browser() {
         // load the web page
-        webEngine.load(getClass().getClassLoader().getResource("html/help.html").toExternalForm());
+        webEngine.load(getClass().getClassLoader().getResource("html/check2.html").toExternalForm());
         //add the web view to the scene
         getChildren().add(browser);
 

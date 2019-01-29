@@ -1,10 +1,12 @@
 package controllers;
 
+import image_handle.ImageHandle;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelReader;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -33,6 +35,8 @@ public class MainController {
     public void showImageInfo(ActionEvent actionEvent) {
         Stage stage = new Stage();
         stage.setTitle("Web View");
+        Image workImage = photoView.getImage();
+        ImageHandle.createHistogram(workImage);
         Scene scene = new Scene(new Browser(),900,600, Color.web("#666970"));
         stage.setScene(scene);
         stage.show();
