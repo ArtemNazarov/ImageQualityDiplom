@@ -5,28 +5,29 @@ import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.paint.Color;
 
-import java.io.*;
-import java.lang.reflect.Type;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class ImageHandle {
 
-    private static ContrastChange contrastChange;
+    private ContrastChange contrastChange;
 
 
     public ImageHandle() {
         this.contrastChange = new ContrastChange();
     }
 
-    public static ContrastChange getContrastChange() {
+    public ContrastChange getContrastChange() {
         return contrastChange;
     }
 
-    public static void createHistogram(Image image){
+    public void createHistogram(Image image){
         writeHistToFile(buildImageHistogram(image));
     }
 
-
-    public static Histogram buildImageHistogram(Image image){
+    public  Histogram buildImageHistogram(Image image) {
         int width = (int)image.getWidth();
         int height = (int)image.getHeight();
         int size = 256;
@@ -38,14 +39,11 @@ public class ImageHandle {
             {
                 if (!(i == 0 || j == 0 || i == width - 1 || j == height - 1)) {
                     Color color = pixelReader.getColor(i - 1, j - 1);
-                    int R = (int)color.getRed();
-                    R = R * 255;
+                    int R = (int)(color.getRed() * 255);
                     hist.getRed()[R] += 1;
-                    int B = (int)color.getBlue();
-                    B = B * 255;
+                    int B = (int)(color.getBlue() * 255);
                     hist.getBlue()[B] += 1;
-                    int G = (int)color.getGreen();
-                    G = G * 255;
+                    int G = (int)(color.getGreen() * 255);
                     hist.getGreen()[G] += 1;
                 }
             }
@@ -53,13 +51,14 @@ public class ImageHandle {
         return hist;
     }
 
-    public static void writeHistToFile(Histogram hist){
-        File jsonFile = new File(ImageHandle.class.getClassLoader().getResource("json/data.json").toString());
+    public void writeHistToFile(Histogram hist) {
+//        File jsonFile = new File(getClass().getClassLoader().getResource("json/data.json").toString());
         Gson gson = new Gson();
         String json = gson.toJson(hist);
         try{
-            BufferedWriter bw = new BufferedWriter(new FileWriter(jsonFile));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(getClass().getClassLoader().getResource("json/data.json").getPath()));
             bw.write(json);
+            bw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -3,3 +3,6 @@
 ImageQualityDiplom.iml
 target/classes/*
 *.class
+*.prefs
+.classpath
+.project

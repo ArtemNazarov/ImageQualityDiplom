@@ -2,27 +2,27 @@ package image_handle;
 
 public class Histogram {
 
-    private double[] red;
-    private double[] green;
-    private double[] blue;
+    private Reading[] red;
+    private Reading[] green;
+    private Reading[] blue;
 
 
     public Histogram(int size){
-        this.red = new double[size];
-        this.green = new double[size];
-        this.blue = new double[size];
+        this.red = new Reading[size];
+        this.green = new Reading[size];
+        this.blue = new Reading[size];
 
     }
 
-    public double[] getRed() {
+    public Reading[] getRed() {
         return red;
     }
 
-    public double[] getGreen() {
+    public Reading[] getGreen() {
         return green;
     }
 
-    public double[] getBlue() {
+    public Reading[] getBlue() {
         return blue;
     }
 }

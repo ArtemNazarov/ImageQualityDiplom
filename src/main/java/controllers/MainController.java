@@ -34,9 +34,10 @@ public class MainController {
 
     public void showImageInfo(ActionEvent actionEvent) {
         Stage stage = new Stage();
-        stage.setTitle("Web View");
+        stage.setTitle("Histogram");
         Image workImage = photoView.getImage();
-        ImageHandle.createHistogram(workImage);
+        ImageHandle handler = new ImageHandle();
+        handler.createHistogram(workImage);
         Scene scene = new Scene(new Browser(),900,600, Color.web("#666970"));
         stage.setScene(scene);
         stage.show();
