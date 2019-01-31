@@ -1,20 +1,20 @@
 package image_handle;
 
 public class Reading {
-    private int index;
+    private int x;
     private double value;
 
     public Reading(int index, double value) {
-        this.index = index;
+        this.x = index;
         this.value = value;
     }
 
-    public int getIndex() {
-        return index;
+    public int getX() {
+        return x;
     }
 
-    public void setIndex(int index) {
-        this.index = index;
+    public void setX(int x) {
+        this.x = x;
     }
 
     public double getValue() {

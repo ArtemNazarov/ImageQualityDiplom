@@ -19,11 +19,13 @@
           <items>
             <MenuItem mnemonicParsing="false" text="New" />
             <MenuItem mnemonicParsing="false" onAction="#openImage" text="Open…" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
+            <Menu mnemonicParsing="false" text="Open Recent">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                     </items></Menu>
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem mnemonicParsing="false" text="Close" />
             <MenuItem mnemonicParsing="false" text="Save" />
-                  <MenuItem fx:id="imageInfoItem" mnemonicParsing="false" onAction="#showImageInfo" text="SomeInfo" />
             <MenuItem mnemonicParsing="false" text="Save As…" />
             <MenuItem mnemonicParsing="false" text="Revert" />
             <SeparatorMenuItem mnemonicParsing="false" />
@@ -34,28 +36,25 @@
         </Menu>
         <Menu mnemonicParsing="false" text="Edit">
           <items>
-            <MenuItem mnemonicParsing="false" text="Undo" />
+            <MenuItem mnemonicParsing="false" onAction="#undoContrast" text="Undo" />
             <MenuItem mnemonicParsing="false" text="Redo" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Cut" />
-            <MenuItem mnemonicParsing="false" text="Copy" />
-            <MenuItem mnemonicParsing="false" text="Paste" />
-            <MenuItem mnemonicParsing="false" text="Delete" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Select All" />
-            <MenuItem mnemonicParsing="false" text="Unselect All" />
           </items>
         </Menu>
+            <Menu mnemonicParsing="false" text="Image info">
+              <items>
+                <MenuItem fx:id="imageInfoItem" mnemonicParsing="false" onAction="#showImageInfo" text="Построить гистограмму изображения" />
+              </items>
+            </Menu>
         <Menu mnemonicParsing="false" text="Help">
           <items>
-            <MenuItem mnemonicParsing="false" text="About" />
+            <MenuItem fx:id="aboutItem" mnemonicParsing="false" onAction="#aboutClick" text="About" />
           </items>
         </Menu>
       </menus>
     </MenuBar>
-    <SplitPane dividerPositions="0.2, 0.8" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <SplitPane dividerPositions="0.22695652173913045, 0.8" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <items>
-        <AnchorPane prefHeight="551.0" prefWidth="146.0">
+        <AnchorPane prefHeight="753.0" prefWidth="264.0">
           <children>
             <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Master" textAlignment="CENTER" wrapText="false">
               <font>
@@ -65,6 +64,9 @@
                 <Color blue="0.624" green="0.624" red="0.624" fx:id="x2" />
               </textFill>
             </Label>
+                  <Button fx:id="contrastButton" layoutX="22.0" layoutY="139.0" mnemonicParsing="false" onAction="#contrastImage" prefHeight="25.0" prefWidth="194.0" text="Контрастирование" />
+                  <ChoiceBox fx:id="contrastAlgoBox" layoutX="22.0" layoutY="95.0" prefHeight="25.0" prefWidth="194.0" />
+                  <Label layoutX="22.0" layoutY="64.0" text="Версия алгоритма" />
                   <!--<Button fx:id="hey" onAction="openFuck()" layoutX="54.0" layoutY="216.0" mnemonicParsing="false" text="Button" />-->
                   <!--<fx:script>-->
                     <!--var x = 0;-->

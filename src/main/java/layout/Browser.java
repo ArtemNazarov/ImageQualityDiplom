@@ -18,8 +18,8 @@ public class Browser extends Region {
         webEngine.load(getClass().getClassLoader().getResource("html/hist.html").toExternalForm());
         //add the web view to the scene
         getChildren().add(browser);
-
     }
+
     private Node createSpacer() {
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);

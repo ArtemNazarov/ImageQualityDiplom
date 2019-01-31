@@ -9,7 +9,7 @@ public class DialogManager {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("\u041E\u0448\u0438\u0431\u043A\u0430!");
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image(DialogManager.class.getClassLoader().getResource("/icons/warning.png").toString()));
+        stage.getIcons().add(new Image(DialogManager.class.getClassLoader().getResource("icons/warning.png").toExternalForm()));
         alert.setContentText(text);
         alert.setHeaderText("");
         alert.showAndWait();

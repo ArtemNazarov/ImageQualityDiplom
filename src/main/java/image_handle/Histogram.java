@@ -2,27 +2,62 @@ package image_handle;
 
 public class Histogram {
 
-    private Reading[] red;
-    private Reading[] green;
-    private Reading[] blue;
-
+    private double[] red;
+    private double[] green;
+    private double[] blue;
+    private int size;
 
     public Histogram(int size){
-        this.red = new Reading[size];
-        this.green = new Reading[size];
-        this.blue = new Reading[size];
+        this.red = new double[size];
+
+        this.green = new double[size];
+
+        this.blue = new double[size];
+        this.size = size;
 
     }
 
-    public Reading[] getRed() {
+    public double[] getRed() {
         return red;
     }
 
-    public Reading[] getGreen() {
+    public double[] getGreen() {
         return green;
     }
 
-    public Reading[] getBlue() {
+    public int getSize() {
+        return size;
+    }
+
+    public double[] getBlue() {
         return blue;
     }
+
+    public Double[] getRedObjs(){
+
+        Double[] reds = new Double[size];
+        for (int i = 0; i < size; i++){
+            reds[i] = red[i];
+        }
+        return reds;
+    }
+
+    public Double[] getBlueObjs(){
+
+        Double[] blues = new Double[size];
+        for (int i = 0; i < size; i++){
+            blues[i] = blue[i];
+        }
+        return blues;
+    }
+
+    public Double[] getGreenObjs(){
+
+        Double[] greens = new Double[size];
+        for (int i = 0; i < size; i++){
+            greens[i] = green[i];
+        }
+        return greens;
+    }
+
 }

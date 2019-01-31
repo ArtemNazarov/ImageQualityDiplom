@@ -3,17 +3,18 @@ package image_handle;
 import com.google.gson.Gson;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
+import javafx.scene.image.PixelWriter;
+import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class ImageHandle {
 
     private ContrastChange contrastChange;
-
+    private static Image sourceImage;
 
     public ImageHandle() {
         this.contrastChange = new ContrastChange();
@@ -24,10 +25,10 @@ public class ImageHandle {
     }
 
     public void createHistogram(Image image){
-        writeHistToFile(buildImageHistogram(image));
+//        writeHistToFile(buildImageHistogram(image));
     }
 
-    public  Histogram buildImageHistogram(Image image) {
+    public static Histogram buildImageHistogram(Image image) {
         int width = (int)image.getWidth();
         int height = (int)image.getHeight();
         int size = 256;
@@ -51,17 +52,54 @@ public class ImageHandle {
         return hist;
     }
 
-    public void writeHistToFile(Histogram hist) {
-//        File jsonFile = new File(getClass().getClassLoader().getResource("json/data.json").toString());
-        Gson gson = new Gson();
-        String json = gson.toJson(hist);
-        try{
-            BufferedWriter bw = new BufferedWriter(new FileWriter(getClass().getClassLoader().getResource("json/data.json").getPath()));
-            bw.write(json);
-            bw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
+    public static Image getSourceImage(){
+        return sourceImage;
     }
+
+//    public void writeHistToFile(Histogram hist) {
+////        File jsonFile = new File(getClass().getClassLoader().getResource("json/data.json").toString());
+//        Gson gson = new Gson();
+//        String blueJson = gson.toJson(hist.getBlue());
+//        String redJson = gson.toJson(hist.getRed());
+//        String greenJson = gson.toJson(hist.getGreen());
+//
+//        blueJson = "var blueData = " + blueJson + ";";
+//        redJson = "var redData = " + redJson + ";";
+//        greenJson = "var greenData = " + greenJson + ";";
+//
+//        try {
+//            BufferedWriter bw = new BufferedWriter(new FileWriter(getClass().getClassLoader().getResource("js/data.js").getPath()));
+//            bw.write(blueJson);
+//            bw.write(redJson);
+//            bw.write(greenJson);
+//            bw.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
+
+    /**
+     * copy the given image to a writeable image
+     * @param image
+     * @return a writeable image
+     */
+    public static WritableImage copyImage(Image image) {
+        int height=(int)image.getHeight();
+        int width=(int)image.getWidth();
+        PixelReader pixelReader=image.getPixelReader();
+        WritableImage writableImage = new WritableImage(width,height);
+        PixelWriter pixelWriter = writableImage.getPixelWriter();
+
+        for (int y = 0; y < height; y++){
+            for (int x = 0; x < width; x++){
+                Color color = pixelReader.getColor(x, y);
+                pixelWriter.setColor(x, y, color);
+            }
+        }
+        return writableImage;
+    }
+
+
 }
